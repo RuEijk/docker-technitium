@@ -2,7 +2,10 @@ FROM alpine:3.15
 
 ENV DOTNET_SCRIPT_URL "https://dot.net/v1/dotnet-install.sh"
 ENV DOTNET_VERSION "6.0"
-ENV TECHNITIUM_BIN_URL "https://download.technitium.com/dns/DnsServerPortable.tar.gz"
+ENV TECHNITIUM_VERSION "latest"
+ENV TECHNITIUM_URL_ARCHIVED_VERSION "https://download.technitium.com/dns/archive/${TECHNITIUM_VERSION}/DnsServerPortable.tar.gz"
+ENV TECHNITIUM_URL_LATEST "https://download.technitium.com/dns/DnsServerPortable.tar.gz"
+
 
 WORKDIR /tmp
 
@@ -17,7 +20,8 @@ RUN wget -O install_dotnet.sh ${DOTNET_SCRIPT_URL} && \
   rm /tmp/install_dotnet.sh
 
 # Install Technitium
-RUN wget -O technitium.tar.gz ${TECHNITIUM_BIN_URL} && \
+RUN if [ $TECHNITIUM_VERSION != "latest" ] ; then TECHNITIUM_DOWNLOAD_URL=${TECHNITIUM_URL_ARCHIVED_VERSION} ; else TECHNITIUM_DOWNLOAD_URL=${TECHNITIUM_URL_LATEST} ; fi && \
+  wget -O technitium.tar.gz ${TECHNITIUM_DOWNLOAD_URL} && \
   mkdir -p /etc/dns/ && \
   tar -zxf technitium.tar.gz -C /etc/dns/ && \
   chmod +x /etc/dns/start.sh && \
