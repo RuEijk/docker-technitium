@@ -11,7 +11,7 @@ WORKDIR /tmp
 
 # Install dependencies
 RUN apk add --no-cache bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ openssl wget zlib
-RUN apk add --no-cache libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing/
+RUN apk add --no-cache libgdiplus --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing/
 
 # Install .NET
 RUN wget -O install_dotnet.sh ${DOTNET_SCRIPT_URL} && \
