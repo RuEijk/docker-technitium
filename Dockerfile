@@ -1,4 +1,4 @@
-FROM alpine:3.15
+FROM alpine:3.17
 
 ENV DOTNET_SCRIPT_URL "https://dot.net/v1/dotnet-install.sh"
 ENV DOTNET_VERSION "7.0"
