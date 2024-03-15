@@ -1,7 +1,7 @@
 FROM alpine:3.17
 
 ENV DOTNET_SCRIPT_URL "https://dot.net/v1/dotnet-install.sh"
-ENV DOTNET_VERSION "7.0"
+ENV DOTNET_VERSION "8.0"
 ENV TECHNITIUM_VERSION "latest"
 ENV TECHNITIUM_URL_ARCHIVED_VERSION "https://download.technitium.com/dns/archive/${TECHNITIUM_VERSION}/DnsServerPortable.tar.gz"
 ENV TECHNITIUM_URL_LATEST "https://download.technitium.com/dns/DnsServerPortable.tar.gz"
